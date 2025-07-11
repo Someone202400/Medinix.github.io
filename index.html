@@ -1,230 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medinix | Empowering Medication Adherence</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medinix Non-Profit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #d4fcf9 0%, #ffffff 100%);
-      color: #2a2a2a;
-      animation: backgroundShift 30s ease-in-out infinite alternate;
-      transition: background 1s ease;
-      overflow-x: hidden;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes backgroundShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
     }
-    header {
-      background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-      color: #1d3557;
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      animation: fadeInSlide 1.2s ease forwards;
-      position: relative;
-      overflow: hidden;
+    .gradient-bg {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     }
-    header::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
-      animation: shimmer 10s linear infinite;
+    .hover-scale {
+      transition: transform 0.3s ease;
     }
-    @keyframes shimmer {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    h1 {
-      margin: 0;
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      font-weight: 700;
-      animation: glowText 3s ease-in-out infinite alternate;
-    }
-    @keyframes glowText {
-      0% { text-shadow: 0 0 10px #c2e9fb; }
-      100% { text-shadow: 0 0 20px #a1c4fd; }
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-      opacity: 0.8;
-      animation: fadeInUp 2s ease-in-out;
-    }
-    nav {
-      background: #ffffffaa;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    nav a {
-      color: #1d3557;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.6rem 1.4rem;
-      border-radius: 30px;
-      background: linear-gradient(to right, #edf6f9, #d0f0f2);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    nav a:hover {
-      background: #a8dadc;
-      color: #ffffff;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-    .section {
-      padding: 5rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      animation: fadeInUp 1.5s ease, pulseSection 12s infinite alternate;
-      position: relative;
-      overflow: hidden;
-    }
-    @keyframes pulseSection {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.01); }
-    }
-    .section::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: -10%;
-      width: 120%;
-      height: 150%;
-      background: radial-gradient(circle, rgba(200,255,255,0.15), transparent);
-      animation: floatGlow 8s ease-in-out infinite alternate;
-      z-index: -1;
-    }
-    @keyframes floatGlow {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-20px) rotate(3deg); }
-    }
-    .section h2 {
-      font-size: 2.6rem;
-      margin-bottom: 1.5rem;
-      border-left: 8px solid #ffb703;
-      padding-left: 1rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-      animation: titleWave 5s ease-in-out infinite alternate;
-    }
-    @keyframes titleWave {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(5px); }
-    }
-    .card {
-      background: #ffffffdd;
-      backdrop-filter: blur(10px);
-      color: #1d3557;
-      padding: 2rem;
-      border-radius: 25px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      margin-top: 1rem;
-      line-height: 1.8;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: floatCard 6s ease-in-out infinite alternate, fadeInUp 1s ease forwards, cardGlow 3s ease-in-out infinite alternate;
-    }
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-    }
-    @keyframes cardGlow {
-      0% { box-shadow: 0 0 10px rgba(173, 232, 244, 0.3); }
-      100% { box-shadow: 0 0 20px rgba(173, 232, 244, 0.6); }
-    }
-    .footer {
-      background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-      color: #1d3557;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
-      font-size: 1rem;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-      animation: fadeInSlide 1.5s ease;
-    }
-    a {
-      color: #1d3557;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInSlide {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floatCard {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-5px); }
+    .hover-scale:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Medinix</h1>
-    <p>Empowering Health Through Medication Adherence</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#mission">Mission</a>
-    <a href="#system">Our System</a>
-    <a href="#contact">Contact</a>
+<body class="bg-gray-50 font-sans">
+  <!-- Navbar -->
+  <nav class="gradient-bg text-white p-4 sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold tracking-tight">Medinix</h1>
+      <div class="flex items-center space-x-4">
+        <a href="#about" class="hover:text-gray-200 transition duration-300">About</a>
+        <a href="#features" class="hover:text-gray-200 transition duration-300">Features</a>
+        <a href="#contact" class="hover:text-gray-200 transition duration-300">Contact</a>
+        <select id="languageSelect" class="bg-purple-700 text-white p-2 rounded focus:outline-none">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+    </div>
   </nav>
 
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <div class="card">
-      <p>
-        Medinix is a high school nonprofit dedicated to improving medication adherence for seniors, individuals in rural communities, or any person in need.
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-24 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-extrabold mb-6 animate-fade-in">Welcome to Medinix</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s;">
+        Revolutionizing healthcare with our cutting-edge medication management platform.
       </p>
+      <a href="https://medinix-app.org" target="_blank" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover-scale animate-fade-in" style="animation-delay: 0.4s;">
+        Explore Our Platform
+      </a>
     </div>
   </section>
 
-  <section id="mission" class="section">
-    <h2>Our Mission</h2>
-    <div class="card">
-      <p>
-        We aim to create a world where no one misses a critical dose. Our focus is to improve health outcomes by helping individuals stick to their prescribed medication routines.
-      </p>
+  <!-- About Section -->
+  <section id="about" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 animate-fade-in">Who We Are</h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="md:w-1/2 animate-fade-in" style="animation-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Healthcare Image" class="rounded-lg shadow-lg hover-scale">
+        </div>
+        <div class="md:w-1/2 text-center md:text-left">
+          <h3 class="text-2xl font-semibold mb-4 animate-fade-in" style="animation-delay: 0.4s;">Medinix Non-Profit</h3>
+          <p class="text-lg text-gray-600 animate-fade-in" style="animation-delay: 0.6s;">
+            We're a non-profit dedicated to making healthcare accessible through innovative tech. Our mission is to empower patients and caregivers with tools to manage health effortlessly.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="system" class="section">
-    <h2>Medicine Reminder System</h2>
-    <div class="card">
-      <p>
-        We are currently developing a medicine reminder and tracking system designed to help people take the correct medications at the right time and dosage. This system will send alerts and allow individuals or caregivers to track medication adherence.
-      </p>
+  <!-- Features Section -->
+  <section id="features" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 animate-fade-in">Our Platform Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.2s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Medication Management</h3>
+          <p class="text-gray-600">Easily add medications, set dosages, and schedule times.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.4s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Adherence Tracking</h3>
+          <p class="text-gray-600">Track medication adherence with detailed weekly reports.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.6s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Smart Notifications</h3>
+          <p class="text-gray-600">Receive timely reminders to stay on top of your medications.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.8s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">AI Symptom Checker</h3>
+          <p class="text-gray-600">Input symptoms and get instant health guidance.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 1s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Caregiver Support</h3>
+          <p class="text-gray-600">Add caregivers to monitor and support your health journey.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 1.2s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Multi-Language</h3>
+          <p class="text-gray-600">Use the platform in your preferred language.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 1.4s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Doctor Contact</h3>
+          <p class="text-gray-600">Connect with doctors and access hospital resources easily.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 1.6s;">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">Medication Library</h3>
+          <p class="text-gray-600">Explore a comprehensive database of medication information.</p>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://medinix-app.org" target="_blank" class="inline-block bg-purple-600 text-white px-8 py-4 rounded-full font-semibold hover-scale animate-fade-in">Try It Now</a>
+      </div>
     </div>
   </section>
 
-<section id="contact" class="section">
-  <h2>Contact Us</h2>
-  <div class="card">
-    <p><strong>Name:</strong> Lohithaksh.V</p>
-    <p><strong>Email:</strong> <a href="mailto:lvdarkred@gmail.com">lvdarkred@gmail.com</a></p>
-    <p><strong>Phone:</strong> 678-937-6646</p>
-  </div>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 animate-fade-in">Get in Touch</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.2s;">
+          <h3 class="text-xl font-semibold mb-4 text-purple-600">Contact Us</h3>
+          <p class="text-gray-600">Email: <a href="mailto:lvdarkred@gmail.com" class="text-purple-600 hover:underline">lvdarkred@gmail.com</a></p>
+          <p class="text-gray-600">Phone: <a href="tel:+16789376646" class="text-purple-600 hover:underline">+1 (678) 937-6646</a></p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover-scale animate-fade-in" style="animation-delay: 0.4s;">
+          <h3 class="text-xl font-semibold mb-4 text-purple-600">Emergency Resources</h3>
+          <p class="text-gray-600"><a href="tel:911" class="text-purple-600 hover:underline">911 (Emergency)</a></p>
+          <p class="text-gray-600"><a href="https://www.redcross.org" target="_blank" class="text-purple-600 hover:underline">Red Cross</a></p>
+          <p class="text-gray-600"><a href="https://www.mayoclinic.org" target="_blank" class="text-purple-600 hover:underline">Mayo Clinic</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <p>© 2025 Medinix. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="gradient-bg text-white py-10">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-lg">© 2025 Medinix Non-Profit. All rights reserved.</p>
+      <p class="mt-2"><a href="mailto:lvdarkred@gmail.com" class="hover:underline">lvdarkred@gmail.com</a></p>
+      <div class="mt-4 flex justify-center space-x-4">
+        <a href="https://x.com/medinix" target="_blank" class="hover:text-gray-200">X</a>
+        <a href="https://facebook.com/medinix" target="_blank" class="hover:text-gray-200">Facebook</a>
+        <a href="https://linkedin.com/company/medinix" target="_blank" class="hover:text-gray-200">LinkedIn</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Language Switcher
+    document.getElementById('languageSelect').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      if (lang === 'es') {
+        document.querySelector('h1').innerText = 'Medinix Sin Fines de Lucro';
+        document.querySelector('h2').innerText = 'Bienvenido a Medinix Sin Fines de Lucro';
+      } else if (lang === 'fr') {
+        document.querySelector('h1').innerText = 'Medinix Sans But Lucratif';
+        document.querySelector('h2').innerText = 'Bienvenue à Medinix Sans But Lucratif';
+      } else {
+        document.querySelector('h1').innerText = 'Medinix';
+        document.querySelector('h2').innerText = 'Welcome to Medinix';
+      }
+    });
+
+    // Scroll Animation Trigger
+    const elements = document.querySelectorAll('.animate-fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
 
